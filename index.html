@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Nehu ❤️</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Segoe UI',sans-serif;
+}
+
+body{
+  background: radial-gradient(circle at top,#1b1b2f,#0f0f1a);
+  color:#fff;
+  overflow-x:hidden;
+}
+
+/* ---------- SECTION ---------- */
+section{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-direction:column;
+  text-align:center;
+  padding:40px 20px;
+  position:relative;
+}
+
+h1{font-size:3rem;margin-bottom:15px;}
+h2{font-size:2rem;margin-bottom:15px;}
+
+p{
+  font-size:1.1rem;
+  max-width:720px;
+  line-height:1.7;
+  opacity:.9;
+}
+
+/* ---------- EFFECTS ---------- */
+.glow{
+  color:#ff7ad9;
+  text-shadow:0 0 20px rgba(255,122,217,.7);
+}
+
+.fade{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1s ease;
+}
+.fade.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ---------- BUTTON ---------- */
+button{
+  margin-top:30px;
+  padding:14px 34px;
+  font-size:1rem;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#ff7ad9,#8f7aff);
+  color:#fff;
+  cursor:pointer;
+  transition:.3s;
+}
+button:hover{
+  transform:scale(1.07);
+  box-shadow:0 0 25px rgba(143,122,255,.7);
+}
+
+/* ---------- ROSE PETALS ---------- */
+.rose{
+  position:absolute;
+  top:-50px;
+  font-size:24px;
+  animation:fall linear forwards;
+}
+@keyframes fall{
+  to{
+    transform:translateY(120vh) rotate(360deg);
+    opacity:0;
+  }
+}
+
+/* ---------- HEART POP ---------- */
+.heart{
+  position:absolute;
+  font-size:22px;
+  animation:floatUp 2.5s ease forwards;
+}
+@keyframes floatUp{
+  to{
+    transform:translateY(-120px);
+    opacity:0;
+  }
+}
+
+footer{
+  padding:20px;
+  font-size:.9rem;
+  opacity:.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- SECTION 1 -->
+<section>
+  <h1 class="glow fade">Happy Birthday Nehu 🎂</h1>
+  <p class="fade">
+    Aaj ka din sirf tumhare liye hai.  
+    Tumhari smile aur tumhara hona — dono priceless hain.
+  </p>
+  <button onclick="goTo(1)">Start the Journey ✨</button>
+</section>
+
+<!-- SECTION 2 -->
+<section>
+  <h2 class="fade">Why You’re Special 💖</h2>
+  <p class="fade">
+    Tumhari simplicity hi tumhari asli beauty hai.  
+    Tum saath hoti ho toh cheezein apne aap better lagti hain.
+  </p>
+  <button onclick="goTo(2)">My Feelings 💌</button>
+</section>
+
+<!-- SECTION 3 -->
+<section>
+  <h2 class="fade glow">My Feelings 🌹</h2>
+  <p class="fade">
+    Ye feelings show-off ke liye nahi hain.  
+    Ye respect, care aur honesty se bani hui hain.
+  </p>
+  <button onclick="roseRain(); goTo(3)">More for You 🌙</button>
+</section>
+
+<!-- SECTION 4 -->
+<section>
+  <h2 class="fade">A Small Promise 🤍</h2>
+  <p class="fade">
+    Chahe time badle, situations badlein —  
+    intention aur respect hamesha same rahenge.
+  </p>
+  <button onclick="hearts()">One Last Thing 💫</button>
+</section>
+
+<!-- SECTION 5 -->
+<section>
+  <h2 class="fade glow">Once Again… Happy Birthday ❤️</h2>
+  <p class="fade">
+    May this year bring you peace, growth  
+    aur endless reasons to smile.
+  </p>
+</section>
+
+<footer>
+  Made with ❤️ just for Nehu
+</footer>
+
+<script>
+/* ---------- FADE ON VIEW ---------- */
+const fades=document.querySelectorAll('.fade');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      entry.target.classList.add('show');
+    }
+  });
+},{threshold:.2});
+fades.forEach(f=>observer.observe(f));
+
+/* ---------- AUTO SCROLL ---------- */
+function goTo(i){
+  document.querySelectorAll('section')[i]
+  .scrollIntoView({behavior:'smooth'});
+}
+
+/* ---------- ROSE RAIN ---------- */
+function roseRain(){
+  for(let i=0;i<30;i++){
+    const r=document.createElement("div");
+    r.className="rose";
+    r.innerHTML="🌹";
+    r.style.left=Math.random()*100+"vw";
+    r.style.animationDuration=3+Math.random()*2+"s";
+    document.body.appendChild(r);
+    setTimeout(()=>r.remove(),5000);
+  }
+}
+
+/* ---------- HEART EFFECT ---------- */
+function hearts(){
+  for(let i=0;i<20;i++){
+    const h=document.createElement("div");
+    h.className="heart";
+    h.innerHTML="❤️";
+    h.style.left=50+Math.random()*100-50+"px";
+    h.style.bottom="40px";
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),2500);
+  }
+  goTo(4);
+}
+</script>
+
+</body>
+</html>
